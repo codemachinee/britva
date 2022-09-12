@@ -1,3 +1,4 @@
+from http.server import BaseHTTPRequestHandler
 import telebot
 import os
 #from telebot import types
@@ -9,21 +10,23 @@ token = os.environ['TELEGRAM_TOKEN']
 bot = telebot.TeleBot(token)
 
 
-def video_otchet_admina():
-    bot.send_message('@mytest_two', 'НАПОМИНАНИЕ: видео отчет Админа')
+class handler(BaseHTTPRequestHandler):
+
+    def video_otchet_admina():
+        bot.send_message('@mytest_two', 'НАПОМИНАНИЕ: видео отчет Админа')
 
 
-def video_otchet_barberov():
-    bot.send_message('@mytest_two', 'НАПОМИНАНИЕ: видео отчет Барберов')
+    def video_otchet_barberov():
+        bot.send_message('@mytest_two', 'НАПОМИНАНИЕ: видео отчет Барберов')
 
 
-def otchet_admina_o_zakrytii():
-    bot.send_message('@mytest_two', 'НАПОМИНАНИЕ: отчет Админа о закрытии смены')
+    def otchet_admina_o_zakrytii():
+        bot.send_message('@mytest_two', 'НАПОМИНАНИЕ: отчет Админа о закрытии смены')
 
 
-@bot.message_handler(commands=['status'])
-def status(message):
-    bot.send_message(message.chat.id, 'бот запущен, все работает.')
+    @bot.message_handler(commands=['status'])
+    def status(message):
+        bot.send_message(message.chat.id, 'бот запущен, все работает.')
 
 
 if __name__ == '__main__':

@@ -29,12 +29,12 @@ class handler(BaseHTTPRequestHandler):
         bot.send_message(message.chat.id, 'бот запущен, все работает.')
 
 
-if __name__ == '__main__':
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(video_otchet_admina, "cron", day_of_week='mon-sun', hour=7)
-    scheduler.add_job(video_otchet_barberov, "cron", day_of_week='mon-sun', hour=19)
-    scheduler.add_job(otchet_admina_o_zakrytii, "cron", day_of_week='mon-sun', hour=19, minute=10)
-    scheduler.start()
+    if __name__ == '__main__':
+        scheduler = BackgroundScheduler()
+        scheduler.add_job(video_otchet_admina, "cron", day_of_week='mon-sun', hour=7)
+        scheduler.add_job(video_otchet_barberov, "cron", day_of_week='mon-sun', hour=19)
+        scheduler.add_job(otchet_admina_o_zakrytii, "cron", day_of_week='mon-sun', hour=19, minute=10)
+        scheduler.start()
 
 
-bot.polling()
+    bot.polling()
